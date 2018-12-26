@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Task from './Task';
 
-const TaskList = ({tasks}) => {
+const TaskList = ({ tasks }) => {
     return (
         <div className="task-list">
             {tasks.map((task, i) => {

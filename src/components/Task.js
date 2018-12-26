@@ -1,6 +1,9 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
-const Task = ({text}) => {
+import { removeTask } from '../actions/index'
+
+const Task = ({text, removeTask}) => {
     return (
         <div className="task">
             <input type="checkbox" name="task-status" id="task-status" onClick={() => console.log("finished task button")} />
@@ -8,11 +11,11 @@ const Task = ({text}) => {
                 <p>{text}</p>
                 <div className="icons-wrapper">
                     <i className="fas fa-edit" onClick={() => console.log("edit button")}></i>
-                    <i className="fas fa-trash-alt" onClick={() => console.log("delete button")}></i>
+                    <i className="fas fa-trash-alt" onClick={() => removeTask(text)}></i>
                 </div>
             </div>
         </div>
     );
 }
 
-export default Task;
+export default connect(null, {removeTask})(Task);

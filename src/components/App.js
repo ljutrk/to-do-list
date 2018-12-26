@@ -7,6 +7,9 @@ class App extends Component {
     state = { newTask: "" }
 
     render() {
+        const { newTask } = this.state;
+        const { addNewTask } = this.props;
+
         return (
             <div className="app">
                 <h1 className="app-heading">To Do List!</h1>
@@ -16,8 +19,8 @@ class App extends Component {
                     <button className="buttons-all" onClick={() => console.log("show all tasks")}>All</button>
                 </div>
                 <div className="task-new">
-                    <input type="text" value={this.state.newTask} onChange={(e) => this.setState({newTask: e.target.value})} />
-                    <button onClick={() => this.props.addNewTask(this.state.newTask)}><i className="fas fa-plus"></i></button>
+                    <input type="text" value={newTask} onChange={(e) => this.setState({ newTask: e.target.value })} />
+                    <button onClick={() => addNewTask(newTask)}><i className="fas fa-plus"></i></button>
                 </div>
                 <TaskList />
             </div>

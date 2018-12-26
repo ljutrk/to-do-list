@@ -1,4 +1,4 @@
-import { NEW_TASK } from './types';
+import { NEW_TASK, DELETE_TASK } from './types';
 
 const addNewTask = (task) => {
     return {
@@ -7,4 +7,11 @@ const addNewTask = (task) => {
     }
 }
 
-export { addNewTask }
+const removeTask = (task) => {
+    return {
+        type: DELETE_TASK,
+        payload: task
+    }
+}
+
+export { addNewTask, removeTask };

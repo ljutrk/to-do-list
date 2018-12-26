@@ -16,14 +16,93 @@ html {
 .app-heading {
   padding: 15px 0;
 }
+.buttons {
+  max-width: 400px;
+  display: flex;
+  justify-content: space-between;
+}
 .buttons button {
+  width: 130px;
   padding: 10px;
-  margin-right: 20px;
   background-color: #698df8;
   color: white;
   border: none;
   outline: none;
+  font-size: 20px;
 }
-.tasklist {
-  padding: 15px 0;
+.buttons button:hover {
+  color: #fa983d;
+  cursor: pointer;
+}
+.task {
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+  max-width: 400px;
+  width: 100%;
+}
+.task-list {
+  max-width: 400px;
+  width: 100%;
+  padding-top: 15px;
+}
+.task-new {
+  max-width: 400px;
+  padding-top: 15px;
+  display: flex;
+  justify-content: flex-start;
+  flex-flow: row nowrap;
+}
+.task-new input {
+  padding: 20px;
+  padding-left: 10px;
+  height: 50px;
+  outline: none;
+  width: 100%;
+  font-size: 22px;
+}
+.task-new button {
+  height: 50px;
+  width: 80px;
+  border: none;
+  padding: 0 5px;
+  color: white;
+  outline: none;
+  background-color: #698df8;
+}
+.task-new button i {
+  font-size: 30px;
+}
+.task-new button:hover {
+  color: #fa983d;
+  cursor: pointer;
+}
+.task-content-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-flow: row nowrap;
+}
+.task-content-wrapper p {
+  font-size: 26px;
+}
+.task .icons-wrapper i {
+  font-size: 22px;
+  color: #698df8;
+}
+.task .icons-wrapper i:first-child {
+  margin-right: 10px;
+}
+.task .icons-wrapper i:first-child:hover {
+  color: #fa983d;
+}
+.task .icons-wrapper i:hover {
+  cursor: pointer;
+}
+.task .icons-wrapper i:last-child:hover {
+  color: #bb0000;
+}
+.task input {
+  margin-right: 10px;
 }

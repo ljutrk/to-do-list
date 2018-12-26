@@ -10,6 +10,10 @@ const App = () => {
                 <button className="buttons-done">Done</button>
                 <button className="buttons-all">All</button>
             </div>
+            <div className="task-new">
+                <input type="text" />
+                <button><i className="fas fa-plus"></i></button>
+            </div>
             <TaskList />
         </div>
     );

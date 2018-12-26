@@ -1,19 +1,18 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import Task from './Task';
 
-const TaskList = () => {
+const TaskList = ({tasks}) => {
     return (
         <div className="task-list">
-            <Task />
-            <Task />
-            <Task />
-            <Task />
-            <Task />
-            <Task />
-            <Task />
-            <Task />
+            {tasks.map((task, i) => {
+                return <Task text={task} key={i} />;
+            })}
         </div>
     );
 }
 
-export default TaskList;
+const mapStateToProps = (state) => {
+    return state;
+};
+export default connect(mapStateToProps)(TaskList);

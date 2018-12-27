@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { removeTask, editTask, finishTask } from '../actions/index'
+import { removeTask, editTask, isFinishedTask } from '../actions/index'
 
 class Task extends Component {
     state = {
         editedText: this.props.task.text,
-        editMode: false
+        editMode: false,
+        changedState: false
     }
 
     submitHandler = e => {
@@ -16,6 +17,14 @@ class Task extends Component {
 
         editTask(task.id, editedText);
         this.setState({ editMode: false });
+    }
+
+    changeTaskState = () => {
+        const { changedState } = this.state;
+        const { isFinishedTask, task } = this.props;
+        
+        isFinishedTask(task.id, task.finished);
+        this.setState({changedState: !changedState})
     }
 
     renderEditInput = () => {
@@ -28,7 +37,7 @@ class Task extends Component {
                     autoFocus
                     value={editedText}
                     onChange={e => this.setState({ editedText: e.target.value })}
-                    onBlur={() => this.setState({ editMode: false })}
+                    onBlur={this.submitHandler}
                     onKeyDown={e => e.keyCode === 27 && this.setState({ editMode: false, editedText: task.text })}
                 />
             </form>
@@ -36,12 +45,12 @@ class Task extends Component {
     }
 
     render() {
-        const { removeTask, finishTask, task } = this.props;
+        const { removeTask, task } = this.props;
         const { editMode } = this.state;
 
         return (
             <div className="task">
-                <input type="checkbox" defaultChecked={task.finished} onClick={() => finishTask(task.id)} />
+                <input type="checkbox" defaultChecked={task.finished} onClick={this.changeTaskState} />
                 <div className="task-content-wrapper">
                     {editMode ? this.renderEditInput() : <p className={task.finished ? "finished" : ""}>{task.text}</p>}
                     <div className="icons-wrapper">
@@ -54,4 +63,4 @@ class Task extends Component {
     }
 }
 
-export default connect(null, { removeTask, editTask, finishTask })(Task);
+export default connect(null, { removeTask, editTask, isFinishedTask })(Task);

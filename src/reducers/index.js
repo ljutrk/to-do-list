@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 
-import { NEW_TASK, DELETE_TASK, EDIT_TASK, FINISH_TASK } from '../actions/types';
+import { NEW_TASK, DELETE_TASK, EDIT_TASK, ISFINISHED_TASK } from '../actions/types';
 
 const INITIAL_STATE = [
     { id: 1, text: "buy some apples", finished: true },
@@ -25,10 +25,10 @@ const tasksReducer = (state = INITIAL_STATE, action) => {
                 }
                 return task;
             })];
-        case FINISH_TASK:
+        case ISFINISHED_TASK:
             return [...state.map(task => {
                 if (task.id === action.payload.id) {
-                    task.finished = true;
+                    task.finished = action.payload.finished;
                 }
                 return task;
             })];

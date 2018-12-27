@@ -1,6 +1,8 @@
 # To-do List!
 
-This is a simple To-do List app. Created with [Create React App](https://github.com/facebook/create-react-app), [React-Redux](https://github.com/reduxjs/react-redux) and [Redux](https://github.com/reduxjs/redux)
+This is a simple To-do List app. Created with [Create React App](https://github.com/facebook/create-react-app), [React-Redux](https://github.com/reduxjs/react-redux) and [Redux](https://github.com/reduxjs/redux).
+
+You can find it live [here](https://gitname.github.io/react-gh-pages/). 
 
 ### How to run?
 

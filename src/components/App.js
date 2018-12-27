@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import TaskList from './TaskList';
 import { addNewTask } from '../actions'
+
 class App extends Component {
     state = {
         newTaskText: "",
@@ -14,12 +15,13 @@ class App extends Component {
         const { addNewTask, tasks } = this.props;
         const { newTaskText } = this.state;
 
-        addNewTask(newTaskText, tasks.length + 1)
+        addNewTask(tasks.length + 1, newTaskText)
         this.setState({ newTaskText: "" })
     }
 
     render() {
         const { newTaskText, view } = this.state;
+        console.log(this.props.tasks);
 
         return (
             <div className="app">
@@ -41,8 +43,6 @@ class App extends Component {
     }
 }
 
-const mapStateToProps = (state) => {
-    return state;
-}
+const mapStateToProps = state => state;
 
 export default connect(mapStateToProps, { addNewTask })(App);

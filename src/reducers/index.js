@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
-import { NEW_TASK, DELETE_TASK } from '../actions/types';
+
+import { NEW_TASK, DELETE_TASK, EDIT_TASK } from '../actions/types';
 
 const INITIAL_STATE = [
     { id: 1, text: "buy some apples", finished: true },
@@ -9,6 +10,7 @@ const INITIAL_STATE = [
 ]
 
 const tasksReducer = (state = INITIAL_STATE, action) => {
+    console.log(action.payload)
     switch (action.type) {
         case NEW_TASK:
             return [...state, action.payload];
@@ -16,6 +18,14 @@ const tasksReducer = (state = INITIAL_STATE, action) => {
             return state.filter(task => {
                 return task.id !== action.payload;
             });
+        case EDIT_TASK:
+            return [...state.map(task => {
+                if (task.id === action.payload.id) {
+                    task.text = action.payload.text;
+                }
+                console.log(task)
+                return task;
+            })];
         default:
             return state;
     }

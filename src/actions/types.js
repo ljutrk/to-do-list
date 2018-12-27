@@ -1,4 +1,5 @@
 const NEW_TASK = "NEW_TASK";
 const DELETE_TASK = "DELETE_TASK"
+const EDIT_TASK = "EDIT_TASK"
 
-export { NEW_TASK, DELETE_TASK };
+export { NEW_TASK, DELETE_TASK, EDIT_TASK };

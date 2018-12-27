@@ -1,17 +1,24 @@
-import { NEW_TASK, DELETE_TASK } from './types';
+import { NEW_TASK, DELETE_TASK, EDIT_TASK } from './types';
 
-const addNewTask = (newTaskText, newTaskId) => {
+const addNewTask = (newTaskId, newTaskText) => {
     return {
         type: NEW_TASK,
         payload: { id: newTaskId, text: newTaskText, finished: false }
     }
 }
 
-const removeTask = (id) => {
+const removeTask = id => {
     return {
         type: DELETE_TASK,
         payload: id
     }
 }
 
-export { addNewTask, removeTask };
+const editTask = (taskId, editedTaskText) => {
+    return {
+        type: EDIT_TASK,
+        payload: { id: taskId, text: editedTaskText }
+    }
+}
+
+export { addNewTask, removeTask, editTask };

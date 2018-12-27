@@ -42,6 +42,13 @@ html {
   max-width: 400px;
   width: 100%;
 }
+.task-edit-input {
+  padding-left: 10px;
+  height: 35px;
+  outline: none;
+  width: 100%;
+  font-size: 22px;
+}
 .task-list {
   max-width: 400px;
   width: 100%;

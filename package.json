@@ -1,7 +1,7 @@
 {
   "name": "to-do-list",
   "version": "0.1.0",
-  "homepage": "http://gitname.github.io/to-do-list",
+  "homepage": "http://ljutrk.github.io/to-do-list",
   "private": true,
   "dependencies": {
     "react": "^16.7.0",

@@ -21,7 +21,6 @@ class App extends Component {
 
     render() {
         const { newTaskText, view } = this.state;
-        console.log(this.props.tasks);
 
         return (
             <div className="app">

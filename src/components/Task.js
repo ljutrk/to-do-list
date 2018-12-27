@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { removeTask, editTask } from '../actions/index'
+import { removeTask, editTask, finishTask } from '../actions/index'
 
 class Task extends Component {
     state = {
@@ -36,14 +36,14 @@ class Task extends Component {
     }
 
     render() {
-        const { removeTask, task } = this.props;
+        const { removeTask, finishTask, task } = this.props;
         const { editMode } = this.state;
 
         return (
             <div className="task">
-                <input type="checkbox" name="task-status" id="task-status" onClick={() => console.log("finished task button")} />
+                <input type="checkbox" defaultChecked={task.finished} onClick={() => finishTask(task.id)} />
                 <div className="task-content-wrapper">
-                    {editMode ? this.renderEditInput() : <p>{task.text}</p>}
+                    {editMode ? this.renderEditInput() : <p className={task.finished ? "finished" : ""}>{task.text}</p>}
                     <div className="icons-wrapper">
                         <i className="fas fa-edit" onClick={() => this.setState({ editMode: true })}></i>
                         <i className="fas fa-trash-alt" onClick={() => removeTask(task.id)}></i>
@@ -54,4 +54,4 @@ class Task extends Component {
     }
 }
 
-export default connect(null, { removeTask, editTask })(Task);
+export default connect(null, { removeTask, editTask, finishTask })(Task);

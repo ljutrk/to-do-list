@@ -1,16 +1,16 @@
 import { NEW_TASK, DELETE_TASK } from './types';
 
-const addNewTask = (task) => {
+const addNewTask = (newTaskText, newTaskId) => {
     return {
         type: NEW_TASK,
-        payload: task
+        payload: { id: newTaskId, text: newTaskText, finished: false }
     }
 }
 
-const removeTask = (task) => {
+const removeTask = (id) => {
     return {
         type: DELETE_TASK,
-        payload: task
+        payload: id
     }
 }
 

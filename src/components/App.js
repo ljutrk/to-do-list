@@ -4,28 +4,45 @@ import { connect } from 'react-redux';
 import TaskList from './TaskList';
 import { addNewTask } from '../actions'
 class App extends Component {
-    state = { newTask: "" }
+    state = {
+        newTaskText: "",
+        view: "all"
+    }
+
+    submitHandler = e => {
+        e.preventDefault();
+        const { addNewTask, tasks } = this.props;
+        const { newTaskText } = this.state;
+
+        addNewTask(newTaskText, tasks.length + 1)
+        this.setState({ newTaskText: "" })
+    }
 
     render() {
-        const { newTask } = this.state;
-        const { addNewTask } = this.props;
+        const { newTaskText, view } = this.state;
 
         return (
             <div className="app">
                 <h1 className="app-heading">To Do List!</h1>
                 <div className="buttons">
-                    <button className="buttons-to-do" onClick={() => console.log("show to-do task list")}>To Do</button>
-                    <button className="buttons-done" onClick={() => console.log("show finished task list")}>Done</button>
-                    <button className="buttons-all" onClick={() => console.log("show all tasks")}>All</button>
+                    <button className="buttons-to-do" onClick={() => this.setState({ view: "todo" })}>To Do</button>
+                    <button className="buttons-done" onClick={() => this.setState({ view: "done" })}>Done</button>
+                    <button className="buttons-all" onClick={() => this.setState({ view: "all" })}>All</button>
                 </div>
-                <div className="task-new">
-                    <input type="text" value={newTask} onChange={(e) => this.setState({ newTask: e.target.value })} />
-                    <button onClick={() => addNewTask(newTask)}><i className="fas fa-plus"></i></button>
+                <div>
+                    <form className="task-new" onSubmit={this.submitHandler}>
+                        <input type="text" value={newTaskText} onChange={(e) => this.setState({ newTaskText: e.target.value })} />
+                        <button type="submit"><i className="fas fa-plus"></i></button>
+                    </form>
                 </div>
-                <TaskList />
+                <TaskList view={view} />
             </div>
         );
     }
 }
 
-export default connect(null, { addNewTask })(App);
+const mapStateToProps = (state) => {
+    return state;
+}
+
+export default connect(mapStateToProps, { addNewTask })(App);
